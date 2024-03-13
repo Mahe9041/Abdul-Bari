@@ -88,7 +88,7 @@
 #### Parameter passing methods
 #### 1. Pass by values<br>2. Pass by address<br>3. Pass by reference
 
-    pass by value:
+#### pass by value:
     
     void print(int a){
         cout<<a;
@@ -99,7 +99,7 @@
         print(a);
     }
 
-    Pass by address:
+#### Pass by address:
 
     void swap(int *a,int *b){
         int temp=*a;
@@ -112,7 +112,7 @@
         swap(&a,&b);
     }
 
-    Pass by reference:
+#### Pass by reference:
 
     void swap(int &a,int &b){
         int temp=a;
