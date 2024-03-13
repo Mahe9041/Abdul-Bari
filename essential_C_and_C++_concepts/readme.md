@@ -87,3 +87,196 @@
     }
 #### Parameter passing methods
 #### 1. Pass by values<br>2. Pass by address<br>3. Pass by reference
+
+    pass by value:
+    
+    void print(int a){
+        cout<<a;
+    }
+    void main(){
+        int a;
+        a=5;
+        print(a);
+    }
+
+    Pass by address:
+
+    void swap(int *a,int *b){
+        int temp=*a;
+        *a=*b;
+        *b=temp;
+    }
+
+    void main(){
+        int a=10,b=1;
+        swap(&a,&b);
+    }
+
+    Pass by reference:
+
+    void swap(int &a,int &b){
+        int temp=a;
+        a=b;
+        b=temp;
+    }
+
+    void main(){
+        int a=10,b=1;
+        swap(a,b);
+    }
+
+## Array as parameter
+    void printArr(int a[],int n){
+        for(int i=0;i<n;i++){
+            cout<<a[i]<<" ";
+        }
+    }
+
+    void main(){
+        int a[5]={1,2,3,4,5};
+        printArr(a);
+    }
+
+##### Note : The arrays are always pass by address only.
+
+    int* passingArray(int size){
+        int *p;
+        p=(int*)malloc(size*sizeof(int));
+        for(int i=0;i<size;i++){
+            p[i]=i+1;
+        }
+        return p;
+    }
+
+    void main(){
+        int s=5;
+        int *p=passingArray(5);
+        for(int i=0;i<s;i++){
+            cout<<p[i]<<" ";
+        }
+    }
+
+## Structure as parameter
+#### Pass by value
+    struct rect{
+        int length;
+        int breath;
+    }
+
+    void passStructure(struct rect a){
+        cout<<a.length;
+        cout<<a.breath;
+    }
+
+    void main(){
+        struct rect r={12,13};
+        passStructure(r);
+    }
+##### Note : The pass by reference is exactly the same as pass by value just the '&' added.
+#### Pass by address
+    struct rect{
+        int length;
+        int breath;
+    }
+
+    void passStructure(struct rect *a){
+        cout<<a->length;
+        cout<<a->breath;
+    }
+
+    void main(){
+        struct rect r={12,13};
+        passStructure(&r);
+    }
+## Converting C code to C++ code
+#### 1 thing we have to keep in mind that structure is user defined datatype and groping of variable having same work. Now for structure we have to define additional functions so to avoide that we have classes and objects. Class is user defined data type which is collection of variables and member functions.
+
+    struct rect{
+        int length;
+        int breath;
+    }
+
+    void initialise(struct rect &r1,int length, int breath){
+        r1.length=length;
+        r1.breath=breath;
+    }
+
+    void area(struct rect &r1)
+    {
+        return r1.length*r1.breath;
+    }
+
+    void main(){
+        struct rect r;
+        initialise(r,10,1);
+        area(r)
+    }
+
+#### Now the above in class
+    class rect{
+
+        private:
+        int length;
+        int breath;
+
+        public:
+        Rect (int length, int breath) //constructor
+        {
+            this.length=length;
+            this.breath=breath;
+        }
+
+        void area()
+        {
+            return length*reath;
+        }
+    };
+
+    void main(){
+        rect r{10,1}; //object
+        
+        r.area(r)
+    }
+
+## Class and constructor
+    #include<iostrem.h>
+    using namespace std;
+    class Rect{
+        private:
+        int length;
+        int breath;
+        public:
+        Rect(){
+            length=breath=1;
+        }
+        Rect(int l,int b);
+        int area();
+        int perimeter();
+        int getLength(return length);
+        void setLength(int l){
+            length=l;
+        }
+        ~Rect();
+    };
+
+    Rect :: Rect(int l,int b){
+        length =l;
+        breath =b;
+    }
+    int Rect::area(){
+        return length*breath;
+    }
+    int Rect::perimeter(){
+        return 2*(length+breath);
+    }
+    Rect::~Rect(){}
+
+    int main(){
+        Rect r(10,5);
+        cout<<r.area();
+        cout<<r.perimeter();
+        r.setlength(20);
+        cout<<r.getlength();
+    }
+## Template class
+#### this topic is not that touched in the course so can be skipped.
